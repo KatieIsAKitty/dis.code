@@ -1,0 +1,21 @@
+{
+  "name": "dis.code",
+  "version": "1.0.4",
+  "description": "A framework for discord.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Consolio",
+  "keywords": [
+    "discord",
+    "diskord",
+    "framework"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@keyv/sqlite": "^2.0.0",
+    "discord.js": "^11.4.2",
+    "keyv": "^3.1.0"
+  }
+}
