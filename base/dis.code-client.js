@@ -3,7 +3,7 @@ const Client = Discord.Client;
 const keyv = require('keyv');
 class DiscodeClient extends Client {
     /**
-     * Create a new Discode client
+     * Create a new dis.code client
      * @constructor
      * @param {string} token - The token to login with, can be obtained from https://discordapp.com/developers/applications/[botid]/bots and click 'Copy' under token
      * @param {object} options - The options to initiate the client with, refer to https://discord.js.org/
@@ -25,7 +25,7 @@ class DiscodeClient extends Client {
     }
 
     /**
-     * Login to the Discode client
+     * Run your dis.code client
      */
     run() {
         super.login(this.auth.token)

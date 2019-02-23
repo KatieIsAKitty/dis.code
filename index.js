@@ -1,4 +1,4 @@
 module.exports={
-    client: require('./base/discode-client'),
+    client: require('./base/dis.code-client'),
     embed: require('discord.js').RichEmbed
 };
