@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Client = Discord.Client;
-const keyv = require('keyv');
+const db = require('quick.db');
 class DiscodeClient extends Client {
     /**
      * Create a new dis.code client
@@ -13,7 +13,7 @@ class DiscodeClient extends Client {
         this.storage={}
         this.storage.startOptions=options
         this.auth.token=token
-        this.storage.persist
+        this.storage.persist=db
     }
 
     /**
