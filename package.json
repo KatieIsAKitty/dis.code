@@ -1,6 +1,6 @@
 {
   "name": "dis.code",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A framework for discord.js",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,20 @@
   "author": "Consolio",
   "keywords": [
     "discord",
-    "diskord",
-    "framework"
+    "bot",
+    "discode",
+    "framework",
+    "discord.js",
+    "discord bot",
+    "parser",
+    "handler"
   ],
+  "repository": "https://github.com/Consoli0/dis.code",
   "license": "ISC",
   "dependencies": {
+    "@keyv/sqlite": "^2.0.0",
+    "discord-argument-flag-parser": "^1.0.0",
     "discord.js": "^11.4.2",
-    "lodash": "^4.17.11",
-    "sql": "^0.78.0"
+    "keyv": "^3.1.0"
   }
 }
