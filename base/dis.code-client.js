@@ -10,10 +10,13 @@ class DiscodeClient extends Client {
      */
     constructor(token,options={}) {
         super(options)
-        this.storage={}
-        this.storage.startOptions=options
-        this.auth.token=token
-        this.storage.persist=db
+        this.internal={
+            storage: {
+                persist: db,
+                startOptions: options
+            },
+            token
+        }
     }
 
     /**
@@ -28,7 +31,7 @@ class DiscodeClient extends Client {
      * Run your dis.code client
      */
     run() {
-        super.login(this.auth.token)
+        super.login(this.internal.token)
     }
 }
 module.exports=DiscodeClient
