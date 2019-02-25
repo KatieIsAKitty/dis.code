@@ -1,7 +1,5 @@
 const Discord = require('discord.js');
 const db = require('keyv');
-const superFile = require('../index.js');
-const DiscodeError = superFile.error;
 
 const Client = Discord.Client;
 const persist = new db('sqlite://dis.code-storage.sqlite', {namespace: 'persist'});
@@ -19,8 +17,9 @@ class DiscodeClient extends Client {
         prefix: '!',
         noparse: false
     }) {
-        if((typeof options.ownerID)=='undefined'|(typeof options.ownerID)=='null'|options.ownerID.length<17|options.ownerID.length>20) throw new DiscodeError('Invalid \'ownerID\' startOption');
-        super(options);
+        if((typeof startOptions.ownerID)=='undefined'|(typeof startOptions.ownerID)=='null') throw Error('Invalid \'ownerID\' startOption type');
+        if(startOptions.ownerID.length<17|startOptions.ownerID.length>20) throw Error('Invalid \'ownerID\' startOption length');
+        super(startOptions);
         this.internal={
             token,
             startOptions
@@ -41,12 +40,14 @@ class DiscodeClient extends Client {
     }
 
     /**
-     * Runs when a message has been received and parsed
+     * Runs when a command has been received and parsed
      * @param {function} callback
      */
-    message(callback) {
+    command(callback) {
         this.on('message',(message)=>{
-            callback(require('index').handlers.main(this.internal.startOptions,message.content))
+            let data = require('../index').handlers.main(this.internal.startOptions,message.content);
+            if(!data.cmd) return;
+            callback(data);
         });
     }
 
@@ -54,7 +55,7 @@ class DiscodeClient extends Client {
      * Run your dis.code client
      */
     run() {
-        super.login(this.internal.token).catch((e)=>{throw new DiscodeError(e)});
+        super.login(this.internal.token).catch((e)=>{throw Error(e)});
     }
 };
 module.exports=DiscodeClient;
